@@ -3,6 +3,13 @@ provider "aws" {
 }
 
 terraform {
+  required_version = ">= 1.4.0" # or your preferred version
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 5.0"
+    }
+  }
   backend "s3" {
     bucket = "sctp-ce9-tfstate"
     key    = "daisy-s3-tf-ci.tfstate" #Change this
@@ -13,7 +20,7 @@ terraform {
 data "aws_caller_identity" "current" {}
 
 locals {
-  name_prefix = split("/", "${data.aws_caller_identity.current.arn}")[1]
+  name_prefix = split("/", data.aws_caller_identity.current.arn)[1]
   account_id  = data.aws_caller_identity.current.account_id
 }
 

@@ -95,7 +95,7 @@ resource "aws_s3_bucket_notification" "notification" {
     events              = ["s3:ObjectCreated:*"]
   }
 
-   depends_on = [aws_lambda_permission.allow_s3]
+  depends_on = [aws_lambda_permission.allow_s3]
   # NOTE: Replace with actual Lambda ARN before applying
   lifecycle {
     prevent_destroy = true

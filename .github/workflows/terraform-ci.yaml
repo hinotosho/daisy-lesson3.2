@@ -29,11 +29,9 @@ jobs:
 
       - name: Terraform Init
         run: terraform init
-        working-directory: ./daisy-lesson3.2
 
       - name: Terraform Validate
         run: terraform validate
-        working-directory: ./daisy-lesson3.2
 
       - uses: terraform-linters/setup-tflint@v3
         with:
@@ -55,4 +53,3 @@ jobs:
 
       - name: Terraform Plan
         run: terraform plan
-        working-directory: ./daisy-lesson3.2
